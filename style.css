@@ -1,0 +1,102 @@
+* {
+    margin: 3;
+    padding: 0 auto;
+    box-sizing: border-box;
+}
+::placeholder {
+    color: rgb(255, 255, 255);
+  }
+
+
+h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(255, 255, 255);
+    font-size: 400%;
+    
+    text-align: center;
+}
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(255, 255, 255);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+
+    background-image: url(https://c4.wallpaperflare.com/wallpaper/815/910/541/8k-hogwarts-4k-burning-wallpaper-preview.jpg);
+    background-size: cover;
+    
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+  }
+  
+  form {
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    
+  }
+  
+  input[type="text"] {
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    font-size: 16px;
+    text-decoration: rgb(255, 255, 255);
+    width: 100%;
+    margin-right: 10px;
+    border-radius: 10px;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    height: 50px;
+    width: 550px;
+    
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    
+  }
+  
+  .character-container {
+    margin-top: 20px;
+    font-size: 150%;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    height: 600px;
+    width: 600px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    
+    
+    
+  }
+  
+  img {
+    
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    border-style: groove;
+    border-width: 10px;
+    align-items: center;
+    justify-content: center;
+    
+    
+  }
+  
