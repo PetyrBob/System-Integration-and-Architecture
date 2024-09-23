@@ -58,7 +58,7 @@ function searchChar() {
         charInfo.textContent = 'Character not found.';
       }
     })
-    .catch(error => console.error('Error fetching data:', error));
+    .catch(error => console.error('Error cannot find data.', error));
 
   return false;
 }
