@@ -1,40 +1,64 @@
-function searchChar() {
-  const charName = document.getElementById('charName').value.trim().toLowerCase();
-  const charInfoDiv = document.getElementById('charInfo');
-  
+//Petern Bobs
 
-  charInfoDiv.innerHTML = '';
+function searchChar() {
+  const charName = document.getElementById('charName').value.toLowerCase();
 
   fetch('https://hp-api.herokuapp.com/api/characters')
     .then(response => response.json())
     .then(data => {
-      const charName = data.find(char => {
-        const [firstName, ...lastNameParts] = char.name.toLowerCase().split(' ');
+      const charInfo = document.getElementById('charInfo');
+      charInfo.innerHTML = ''; 
+
+      const foundCharacter = data.find(character => {
+        const [firstName, ...lastNameParts] = character.name.toLowerCase().split(' ');
         const lastName = lastNameParts.join(' ');
-        const fullName = char.name.toLowerCase();
+        const fullName = character.name.toLowerCase();
 
         return firstName === charName || lastName === charName || fullName === charName;
       });
 
-      if (charName) {
-        const charDetails = `
-          <h2>${charName.name}</h2>
-          <p>House: ${charName.house || 'Unknown'}</p>
-          <p>Actor: ${charName.actor || 'Unknown'}</p>
-          <p>Ancestry: ${charName.ancestry || 'Unknown'}</p>
-          <p>Species: ${charName.species || 'Unknown'}</p>
-          <img src="${charName.image}" alt="${charName.name}" width="150px">
-        `;
-        charInfoDiv.innerHTML = charDetails;
-      } else {
+      if (foundCharacter) {
+        const characterDiv = document.createElement('div');
+        const name = document.createElement('h3');
+        name.textContent = `Name: ${foundCharacter.name}`;
+        const house = document.createElement('p');
+        house.textContent = `House: ${foundCharacter.house}`;
+        const ancestry = document.createElement('p');
+        ancestry.textContent = `Ancestry: ${foundCharacter.ancestry || 'Unknown'}`;
+        const patronus = document.createElement('p');
+        patronus.textContent = `Patronus: ${foundCharacter.patronus || 'None'}`;
+        const dateOfBirth = document.createElement('p');
+        dateOfBirth.textContent = `Date of Birth: ${foundCharacter.dateOfBirth || 'Unknown'}`;
+        const species = document.createElement('p');
+        species.textContent = `Species: ${foundCharacter.species || 'Human'}`;
+        const gender = document.createElement('p');
+        gender.textContent = `Gender: ${foundCharacter.gender || 'Unknown'}`;
+        const hairColour = document.createElement('p');
+        hairColour.textContent = `Hair Color: ${foundCharacter.hairColour || 'Unknown'}`;
+        const eyeColour = document.createElement('p');
+        eyeColour.textContent = `Eye Color: ${foundCharacter.eyeColour || 'Unknown'}`;
 
-        charInfoDiv.textContent = 'Character not found :(';
+        const image = document.createElement('img');
+        image.src = foundCharacter.image;
+        image.alt = foundCharacter.name;
+        image.style.width = '150px';
+
+        characterDiv.appendChild(name);
+        characterDiv.appendChild(house);
+        characterDiv.appendChild(ancestry);
+        characterDiv.appendChild(patronus);
+        characterDiv.appendChild(dateOfBirth);
+        characterDiv.appendChild(species);
+        characterDiv.appendChild(gender);
+        characterDiv.appendChild(hairColour);
+        characterDiv.appendChild(eyeColour);
+        characterDiv.appendChild(image);
+        charInfo.appendChild(characterDiv);
+      } else {
+        charInfo.textContent = 'Character not found.';
       }
     })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      charInfoDiv.textContent = 'Data not found :).';
-    });
+    .catch(error => console.error('Error fetching data:', error));
 
-  return false; 
+  return false;
 }
