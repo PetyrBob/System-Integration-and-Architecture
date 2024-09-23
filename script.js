@@ -16,14 +16,14 @@ function searchChar() {
         return firstName === charName || lastName === charName || fullName === charName;
       });
 
-      if (character) {
+      if (charName) {
         const charDetails = `
           <h2>${charName.name}</h2>
           <p>House: ${charName.house || 'Unknown'}</p>
           <p>Actor: ${charName.actor || 'Unknown'}</p>
           <p>Ancestry: ${charName.ancestry || 'Unknown'}</p>
           <p>Species: ${charName.species || 'Unknown'}</p>
-          <img src="${charName.image}" alt="${character.name}" width="150px">
+          <img src="${charName.image}" alt="${charName.name}" width="150px">
         `;
         charInfoDiv.innerHTML = charDetails;
       } else {
