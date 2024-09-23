@@ -8,7 +8,7 @@ function searchChar() {
   fetch('https://hp-api.herokuapp.com/api/characters')
     .then(response => response.json())
     .then(data => {
-      const character = data.find(char => {
+      const charName = data.find(char => {
         const [firstName, ...lastNameParts] = char.name.toLowerCase().split(' ');
         const lastName = lastNameParts.join(' ');
         const fullName = char.name.toLowerCase();
@@ -18,12 +18,12 @@ function searchChar() {
 
       if (character) {
         const charDetails = `
-          <h2>${character.name}</h2>
-          <p>House: ${character.house || 'Unknown'}</p>
-          <p>Actor: ${character.actor || 'Unknown'}</p>
-          <p>Ancestry: ${character.ancestry || 'Unknown'}</p>
-          <p>Species: ${character.species || 'Unknown'}</p>
-          <img src="${character.image}" alt="${character.name}" width="150px">
+          <h2>${charName.name}</h2>
+          <p>House: ${charName.house || 'Unknown'}</p>
+          <p>Actor: ${charName.actor || 'Unknown'}</p>
+          <p>Ancestry: ${charName.ancestry || 'Unknown'}</p>
+          <p>Species: ${charName.species || 'Unknown'}</p>
+          <img src="${charName.image}" alt="${character.name}" width="150px">
         `;
         charInfoDiv.innerHTML = charDetails;
       } else {
@@ -33,7 +33,7 @@ function searchChar() {
     })
     .catch(error => {
       console.error('Error fetching data:', error);
-      charInfoDiv.textContent = 'Errorr fetching character datas. Please try again later! :).';
+      charInfoDiv.textContent = 'Data not found :).';
     });
 
   return false; 
